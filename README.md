@@ -11,4 +11,4 @@
 ```
 $ docker-compose up --scale random-bg=3 -d
 ```
-Browse to [nginx-url](0.0.0.0:4000) (and refresh)
+Browse to 0.0.0.0:4000 (and refresh)
