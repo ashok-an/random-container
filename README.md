@@ -5,7 +5,7 @@
   For testing load balancers
 
 ### Dockerhub image name
-  `ashoka007/random-bg`
+  `ashoka007/random-bg-color`
 
 ### Test run
 ```
