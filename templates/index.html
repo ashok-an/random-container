@@ -13,7 +13,7 @@
   <meta name="author" content="Ashok A N">
   <style>
     body {
-      background-color: {{ data['bg_color'] }};
+      background: linear-gradient(to right, {{ data['bg_color'] }} 0%, black 100%);
     }
     table {
       padding: 20px;
@@ -24,8 +24,9 @@
 
 <body>
   <div class='container' style='padding:100px;'>
-    <h3>Details</h3>
+    <h1>{{ data['container_name'] }}</h1>
     <div class="card" style='align:center;'>
+    <br/>
     <table class="table table-striped table-hover table-border">
       <tr><td>Container name</td><td>{{ data['container_name'] }}</td></tr>
       <tr><td>Hostname</td><td>{{ data['hostname'] }}</td></tr>

@@ -5,6 +5,7 @@ import os
 import random
 import socket
 import sys
+import time
 
 data = {}
 data['hostname'] = 'unknown-host'
@@ -16,7 +17,7 @@ try:
 except Exception as e:
   print('Error: Unable to decipher hostname/ip_address', e)
 
-data['container_name'] = os.environ.get('NAME', 'unknown')
+data['container_name'] = os.environ.get('HOSTNAME', 'unknown')
 data['now'] = str(datetime.datetime.now())
 
 from flask import Flask, render_template, jsonify
@@ -36,6 +37,17 @@ def get_root():
 @app.route('/ping')
 def do_ping():
   return jsonify({'message': 'pong', 'time': data['now'] })
+
+@app.route('/error')
+def internal_error():
+  time.sleep(0.5)
+  return jsonify({'message': 'Internal server error'}), 501
+
+@app.route('/delay')
+def do_delay():
+  i = random.randrange(1, 5)
+  time.sleep(i)
+  return jsonify({'message': 'Slept for {} seconds'.format(i)})
 
 if __name__ == '__main__':
   app.run(debug=True, host='0.0.0.0', port=5000)
